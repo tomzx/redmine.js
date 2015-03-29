@@ -1,0 +1,41 @@
+<h1>{{ issue.subject }}</h1>
+
+<div class="issue">
+	<dl class="row">
+		<dt class="col-sm-3">Status</dt>
+		<dd class="col-sm-3">{{ issue.status.name }}</dd>
+		<dt class="col-sm-3">Start date</dt>
+		<dd class="col-sm-3">{{ issue.start_date }}</dd>
+		<dt class="col-sm-3">Priority</dt>
+		<dd class="col-sm-3">{{ issue.priority.name }}</dd>
+		<dt class="col-sm-3">Due date</dt>
+		<dd class="col-sm-3">{{ issue.due_date || '-' }}</dd>
+		<dt class="col-sm-3">Assignee</dt>
+		<dd class="col-sm-3">{{ issue.assigned_to.name || '-' }}</dd>
+		<dt class="col-sm-3">% Done</dt>
+		<dd class="col-sm-3">
+			<div class="progress">
+				<div class="progress-bar" style="min-width: 2em; width: {{ issue.done_ratio }}%" role="progressbar" aria-valuenow="{{ issue.done_ratio }}" aria-valuemin="0" aria-valuemax="100">
+					{{ issue.done_ratio }}%
+				</div>
+			</div>
+		</dd>
+		<dt class="col-sm-3">Category</dt>
+		<dd class="col-sm-3">{{ issue.category.name || '-' }}</dd>
+		<dt class="col-sm-3">Target version</dt>
+		<dd class="col-sm-3">{{ issue.target || '-' }}</dd>
+	</dl>
+</div>
+
+<div class="history">
+	<div class="entry" data-ng-repeat="entry in issue.journals" ng-init="$entryIndex = $index + 1">
+		{{ entry.user.name }}
+		<div class="pull-right">#{{ $entryIndex }}</div>
+		<hr>
+		<dl class="dl-horizontal" data-ng-repeat="details in entry.details">
+			<dt>{{ details.name }}</dt>
+			<dd>{{ details.old_value ? details.old_value + ' -> ' : '' }}{{ details.new_value }}</dd>
+		</dl>
+		<div class="notes" data-textile="entry.notes"></div>
+	</div>
+</div>

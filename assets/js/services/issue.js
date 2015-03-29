@@ -48,8 +48,8 @@ redmineApp.service('IssueService', function ($http, $q, ConfigurationService, Re
 		});
 	};
 
-	this.get = function (id) {
-		return Restangular.one('issues', id).get();
+	this.get = function (id, include) {
+		return Restangular.one('issues', id).get({include: include});
 	};
 
 

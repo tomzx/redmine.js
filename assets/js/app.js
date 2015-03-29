@@ -25,6 +25,11 @@ var redmineApp = angular.module('redmineApp', ['ngRoute', 'restangular'])
 		controller: 'ProjectVersionsController',
 	});
 
+	$routeProvider.when('/issues/:id', {
+		templateUrl: 'partials/issues/show.html',
+		controller: 'IssueShowController',
+	});
+
 	$routeProvider.when('/issues/:id/edit', {
 		templateUrl: 'partials/issues/edit.html',
 		controller: 'IssueEditController',
