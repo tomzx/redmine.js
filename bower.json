@@ -14,7 +14,8 @@
 		"jquery": "~2.1",
 		"jquery.cookie": "1.4.x",
 		"js-yaml": "~3.2",
-		"restangular": "1.4.x"
+		"restangular": "1.4.x",
+		"textile-js": "~0.1"
 	},
 	"devDependencies": {
 	}

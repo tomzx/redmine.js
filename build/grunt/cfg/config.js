@@ -32,6 +32,7 @@ module.exports = {
 				'public/assets/src/vendor/restangular/dist/restangular.js',
 				'public/assets/src/vendor/js-yaml/dist/js-yaml.js',
 				'public/assets/src/vendor/bootstrap/dist/js/bootstrap.js',
+				'public/assets/src/vendor/textile-js/lib/textile.js',
 			],
 			dist : 'public/assets/js/components.js',
 		},
