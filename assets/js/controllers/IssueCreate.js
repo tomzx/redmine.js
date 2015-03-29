@@ -64,12 +64,4 @@ redmineApp.controller('IssueCreateController', function($controller, $injector, 
 			}
 		);
 	};
-
-	// $injector.invoke(IssueFormController, this, {
-	// 	$scope: $scope,
-	// 	ProjectService: ProjectService,
-	// 	IssueService: IssueService,
-	// 	TrackerService: TrackerService,
-	// 	UserService: UserService
-	// });
 });
