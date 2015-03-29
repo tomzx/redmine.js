@@ -1,0 +1,21 @@
+{
+	"name": "redmine.js",
+	"version": "0.1.0",
+	"directory": "assets/vendor",
+	"private": true,
+	"ignore": [
+	],
+	"dependencies": {
+		"angular": "1.4.x",
+		"angular-resource": "1.4.x",
+		"angular-route": "1.4.x",
+		"bootstrap": "3.3.x",
+		"font-awesome": "4.3.x",
+		"jquery": "~2.1",
+		"jquery.cookie": "1.4.x",
+		"js-yaml": "~3.2",
+		"restangular": "1.4.x"
+	},
+	"devDependencies": {
+	}
+}
