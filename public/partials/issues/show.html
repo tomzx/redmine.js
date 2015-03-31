@@ -1,3 +1,8 @@
+<div class="pull-right btn-group">
+	<a href="#!/issues/{{issue.id}}/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+	<a href="#!/issues/{{issue.id}}/delete" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+</div>
+
 <h1>{{ issue.subject }}</h1>
 
 <div class="issue">
@@ -17,8 +22,8 @@
 			<div class="progress">
 				<div class="progress-bar" style="min-width: 2em; width: {{ issue.done_ratio }}%" role="progressbar" aria-valuenow="{{ issue.done_ratio }}" aria-valuemin="0" aria-valuemax="100">
 					{{ issue.done_ratio }}%
-				</div>
-			</div>
+				</div
+>			</div>
 		</dd>
 		<dt class="col-sm-3">Category</dt>
 		<dd class="col-sm-3">{{ issue.category.name || '-' }}</dd>
