@@ -25,25 +25,5 @@ redmineApp.controller('ProjectIssuesController', function($scope, $rootScope, $w
 			});
 	};
 
-	$scope.deleteIssue = function (issue) {
-		if ($window.confirm('Are you sure you wish to delete the issue?')) {
-			IssueService.delete(issue.id).then(function () {
-				$scope.loadIssues();
-			});
-		}
-	};
-
-	$scope.deleteProject = function (id) {
-		if ($window.confirm('Are you sure you wish to delete the project?')) {
-			ProjectService['delete'](id).then(function () {
-				$location.path("/project");
-			});
-		}
-	};
-
-	$scope.getTrackerMapping = function (tracker) {
-		return TrackerService.getTrackerMapping(tracker);
-	};
-
 	$scope.loadIssues();
 });
