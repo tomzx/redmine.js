@@ -21,9 +21,11 @@ Make sure that you are serving `public/index.html` from a webserver as it will n
 
 In order to use this frontend, your redmine server must return the appropriate CORS headers.
 
+```
 Access-Control-Allow-Headers: X-Requested-With, X-Prototype-Version, Content-Type, X-Redmine-API-Key
 Access-Control-Allow-Methods: OPTIONS, GET,  POST, PUT, DELETE
 Access-Control-Allow-Origin: *
+```
 
 You may install the [Redmine CORS](https://github.com/mavimo/redmine_cors) plugin to do so. Make sure to patch `lib/redmine_cors/patches/application_controller.rb` if you want to be able to use the `DELETE` action.
 
