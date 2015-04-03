@@ -1,0 +1,22 @@
+<ng-include src="'partials/projects/_menu.html'" ng-init="sectionName = 'overview'"></ng-include>
+
+<h2>Overview</h2>
+
+<div class="row">
+	<div class="col-sm-6">
+		<h3><i class="fa fa-file-o"></i> Issue tracking</h3>
+		<ul>
+			<li>Bug: X open / Y</li>
+			<li>Feature: X open / Y</li>
+			<li>Task: X open / Y</li>
+		</ul>
+		<p><a href="#!/projects/{{project.id}}/issues">View all issues</a></p>
+	</div>
+	<div class="col-sm-6">
+		<h3><i class="fa fa-users"></i> Members</h3>
+		<ul class="list-unstyled">
+			<li>Manager: User A, User B</li>
+			<li>Developer: User C, User D</li>
+		</ul>
+	</div>
+</div>

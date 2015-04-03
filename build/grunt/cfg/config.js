@@ -17,7 +17,7 @@ module.exports = {
 		frontend: {
 			src: [
 				'public/assets/src/js/app.js',
-				'public/assets/src/js/**/*.js',
+				'public/assets/src/js/app/**/*.js',
 			],
 			dist: 'public/assets/js/app.js',
 		},

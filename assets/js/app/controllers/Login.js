@@ -10,12 +10,11 @@ redmineApp.controller('LoginController', function($scope, $rootScope, $location,
 
 		UserService.getCurrent()
 			.success(function (data) {
-
+				$.cookie('loggedIn', true);
 				$rootScope.user = data.user;
 
 				ProjectService.getTopLevelProjects().then(
 					function (projects) {
-
 						$rootScope.topLevelProjects = projects;
 						$scope.submitting = false;
 
@@ -25,9 +24,7 @@ redmineApp.controller('LoginController', function($scope, $rootScope, $location,
 						} else {
 							$location.path("/");
 						}
-
 					}, function (response) {
-
 						$scope.addError("Getting toplevel projects failed");
 						console.error(response);
 						$scope.submitting = false;
@@ -41,9 +38,10 @@ redmineApp.controller('LoginController', function($scope, $rootScope, $location,
 	};
 
 	/* Try login based on cookie */
+	var attemptAutoLogin = $.cookie('loggedIn');
 	$scope.baseUrl = $.cookie('baseUrl');
 	$scope.apiKey = $.cookie('apiKey');
-	if ($scope.baseUrl !== undefined && $scope.apiKey !== undefined) {
+	if (attemptAutoLogin && $scope.baseUrl !== undefined && $scope.apiKey !== undefined) {
 		login($scope.baseUrl, $scope.apiKey);
 	}
 

@@ -1,4 +1,4 @@
-redmineApp.controller('ProjectVersionsController', function($scope, $rootScope, $routeParams, ProjectService) {
+redmineApp.controller('ProjectRoadmapController', function($scope, $rootScope, $routeParams, ProjectService) {
 	ProjectService.get($routeParams.id).then(function (project) {
 		$rootScope.project = project;
 	});

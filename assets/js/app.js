@@ -5,44 +5,59 @@ var redmineApp = angular.module('redmineApp', ['ngRoute', 'restangular'])
 		controller: 'LoginController',
 	});
 
+	$routeProvider.when('/logout', {
+		templateUrl: 'partials/logout.html',
+		controller: 'LogoutController',
+	});
+
 	$routeProvider.when('/projects', {
-		templateUrl: 'partials/projects/list.html',
-		controller: 'ProjectListController',
+		templateUrl: 'partials/projects/index.html',
+		controller: 'ProjectIndexController',
+	});
+
+	$routeProvider.when('/projects/create', {
+		templateUrl: 'partials/projects/create.html',
+		controller: 'ProjectCreateController',
 	});
 
 	$routeProvider.when('/projects/:id', {
-		templateUrl: 'partials/issues/index.html',
-		controller: 'ProjectIssuesController',
+		templateUrl: 'partials/projects/show.html',
+		controller: 'ProjectShowController',
+	});
+
+	$routeProvider.when('/projects/:id/activity', {
+		templateUrl: 'partials/projects/activity.html',
+		controller: 'ProjectActivityController',
+	});
+
+	$routeProvider.when('/projects/:id/roadmap', {
+		templateUrl: 'partials/projects/roadmap.html',
+		controller: 'ProjectRoadmapController',
 	});
 
 	$routeProvider.when('/projects/:id/issues', {
-		templateUrl: 'partials/issues/index.html',
+		templateUrl: 'partials/projects/issues.html',
 		controller: 'ProjectIssuesController',
 	});
 
-	$routeProvider.when('/projects/:id/versions', {
-		templateUrl: 'partials/projects/versions.html',
-		controller: 'ProjectVersionsController',
-	});
-
-	$routeProvider.when('/issues/create', {
+	$routeProvider.when('/projects/:id/issues/create', {
 		templateUrl: 'partials/issues/create.html',
 		controller: 'IssueCreateController',
 	});
 
-	$routeProvider.when('/issues/:id', {
+	$routeProvider.when('/projects/:id/issues/:id', {
 		templateUrl: 'partials/issues/show.html',
 		controller: 'IssueShowController',
 	});
 
-	$routeProvider.when('/issues/:id/edit', {
+	$routeProvider.when('/projects/:id/issues/:id/edit', {
 		templateUrl: 'partials/issues/edit.html',
 		controller: 'IssueEditController',
 	});
 
-	$routeProvider.when('/users/issues', {
-		templateUrl: 'partials/users/issues.html',
-		controller: 'UserIssuesController',
+	$routeProvider.when('/projects/:id/settings', {
+		templateUrl: 'partials/projects/edit.html',
+		controller: 'ProjectEditController',
 	});
 
 	$routeProvider.otherwise({
@@ -55,9 +70,19 @@ var redmineApp = angular.module('redmineApp', ['ngRoute', 'restangular'])
 	$rootScope.requestedPath = $location.path();
 	$location.path("/login");
 
+	$.cookie.json = true;
+	setupLocationHooks($rootScope, $location);
 	setupErrorManagement($rootScope);
 	setupRestangular(Restangular);
 });
+
+function setupLocationHooks($rootScope, $location) {
+	$rootScope.$on('$locationChangeStart', function() {
+		if ( ! $.cookie('loggedIn')) {
+			$location.path('/login');
+		}
+	});
+}
 
 function setupErrorManagement($rootScope) {
 	$rootScope.errors = [];

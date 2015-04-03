@@ -1,38 +1,38 @@
 {
-	"name": "redmine.js",
-	"version": "0.1.0",
-	"description": "AngularJS based Redmine REST API client.",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [
-		"redmine",
-		"rest api",
-		"client"
-	],
-	"author": "Tom Rochette <tom@tomrochette.com>",
-	"license": "MIT",
-	"devDependencies": {
-		"async": "~0.9.0",
-		"grunt": "~0.4.5",
-		"grunt-contrib-clean": "~0.6.0",
-		"grunt-contrib-concat": "~0.5.1",
-		"grunt-contrib-copy": "~0.8.0",
-		"grunt-contrib-jshint": "~0.11.1",
-		"grunt-contrib-less": "~1.0.0",
-		"grunt-contrib-symlink": "~0.3.0",
-		"grunt-contrib-uglify": "~0.8.0",
-		"grunt-contrib-watch": "~0.6.1",
-		"grunt-mocha-test": "~0.12.7",
-		"grunt-ng-annotate": "~0.10.0",
-		"jshint-stylish": "~1.0.1",
-		"load-grunt-tasks": "~3.1.0",
-		"lodash": "~3.6.0",
-		"mocha": "~2.2.1",
-		"moment": "~2.9.0",
-		"should": "~5.2.0",
-		"sinon": "~1.14.1",
-		"time-grunt": "~1.1.0"
-	}
+  "name": "redmine.js",
+  "version": "0.1.0",
+  "description": "AngularJS based Redmine REST API client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redmine",
+    "rest api",
+    "client"
+  ],
+  "author": "Tom Rochette <tom@tomrochette.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "async": "~0.9.0",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-contrib-jshint": "~0.11.1",
+    "grunt-contrib-less": "~1.0.0",
+    "grunt-contrib-symlink": "~0.3.0",
+    "grunt-contrib-uglify": "~0.8.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-mocha-test": "~0.12.7",
+    "grunt-ng-annotate": "~0.10.0",
+    "jit-grunt": "~0.9.1",
+    "jshint-stylish": "~1.0.1",
+    "lodash": "~3.6.0",
+    "mocha": "~2.2.1",
+    "moment": "~2.9.0",
+    "should": "~5.2.0",
+    "sinon": "~1.14.1",
+    "time-grunt": "~1.1.0"
+  }
 }

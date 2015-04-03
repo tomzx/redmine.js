@@ -1,0 +1,13 @@
+<ng-include src="'partials/projects/_menu.html'" ng-init="sectionName = 'roadmap'"></ng-include>
+
+<div spinner="versions" class="centered"></div>
+<div class="panel panel-default" ng-repeat="version in versions">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{version.name}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-6 col-md-4 col-lg-3">Status: {{version.status}}</div>
+		</div>
+	</div>
+</div>

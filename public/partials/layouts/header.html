@@ -1,5 +1,5 @@
 <header class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-show="user">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
@@ -28,14 +28,8 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user | userName}} <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#!/users/issues">My Issues</a>
-						</li>
-					</ul>
-				</li>
+				<li><a href="#">{{user | userName}}</a></li>
+				<li><a href="#!/logout">Sign out</a></li>
 			</ul>
 			<p class="navbar-right navbar-text"></p>
 		</nav>
