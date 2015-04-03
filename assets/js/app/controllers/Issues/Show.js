@@ -13,7 +13,7 @@ redmineApp.controller('IssueShowController', function($scope, $rootScope, $windo
 	$scope.deleteIssue = function (issue) {
 		if ($window.confirm('Are you sure you wish to delete the issue?')) {
 			IssueService.delete(issue.id).then(function () {
-				$location.path('/projects/' + issue.project.identifier);
+				$location.path('/projects/' + $rootScope.project.identifier + '/issues');
 			});
 		}
 	};
