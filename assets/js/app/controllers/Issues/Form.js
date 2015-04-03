@@ -50,7 +50,7 @@ redmineApp.controller('IssueFormController', function($scope, ProjectService, Is
 	};
 
 	$scope.$watch("issue.project", function () {
-		if (angular.isDefined($scope.issue) && angular.isDefined($scope.issue.project)) {
+		if (angular.isDefined($scope.issue) && angular.isDefined($scope.project)) {
 
 			/* Reset category if not initial assignment */
 			if (angular.isDefined($scope.categories)) {
@@ -62,11 +62,11 @@ redmineApp.controller('IssueFormController', function($scope, ProjectService, Is
 				delete $scope.issue.fixed_version;
 			}
 
-			IssueService.getCategoriesByProject($scope.issue.project.id).then(function (categories) {
+			IssueService.getCategoriesByProject($scope.project.identifier).then(function (categories) {
 				$scope.categories = categories;
 			});
 
-			ProjectService.getVersions($scope.issue.project.id).then(function (versions) {
+			ProjectService.getVersions($scope.project.identifier).then(function (versions) {
 				$scope.versions = versions;
 			});
 		}

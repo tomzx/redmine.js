@@ -1,7 +1,7 @@
 <ng-include src="'partials/projects/_menu.html'" ng-init="sectionName = 'issues'"></ng-include>
 
 <div class="pull-right btn-group">
-	<a href="#!/projects/{{project.id}}/issues/{{issue.id}}/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+	<a href="#!/projects/{{project.identifier}}/issues/{{issue.id}}/edit" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 	<a class="btn btn-danger" data-ng-click="deleteIssue(issue)"><i class="fa fa-trash"></i> Delete</a>
 </div>
 

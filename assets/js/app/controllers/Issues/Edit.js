@@ -1,4 +1,4 @@
-redmineApp.controller('IssueEditController', function($controller, $injector, $scope, ProjectService, TrackerService, IssueService, UserService, Restangular, $routeParams, $location, $rootScope) {
+redmineApp.controller('IssueEditController', function($controller, $injector, $scope, $routeParams, $location, ProjectService, TrackerService, IssueService, UserService, Restangular) {
 	$controller('IssueFormController', {
 		$scope: $scope,
 		ProjectService: ProjectService,
@@ -9,10 +9,13 @@ redmineApp.controller('IssueEditController', function($controller, $injector, $s
 
 	var originalIssue;
 
+	ProjectService.get($routeParams.project_id).then(function (project) {
+		$scope.project = project;
+	});
+
 	IssueService.get($routeParams.id).then(function (issue) {
 		originalIssue = Restangular.copy(issue);
 		$scope.issue = issue;
-		$rootScope.project = $scope.issue.project;
 	});
 
 	$scope.submit = function () {
@@ -23,7 +26,7 @@ redmineApp.controller('IssueEditController', function($controller, $injector, $s
 		Restangular.one('issues', $scope.issue.id).customPUT(submission).then(
 			function (response) {
 				$scope.submitting = false;
-				$location.path("projects/" + $scope.issue.project.id);
+				$location.path("projects/" + $scope.project.identifier + '/issues/' + $scope.issue.id);
 			},
 			function (response) {
 				$scope.submitting = false;

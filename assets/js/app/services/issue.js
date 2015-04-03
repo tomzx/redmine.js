@@ -58,9 +58,7 @@ redmineApp.service('IssueService', function ($http, $q, ConfigurationService, Re
 		});
 	};
 
-	this.create = function (submission) {
-		return $http.post(issuesUrl + ".json", submission).then(function (response) {
-			return response.data.issue;
-		});
+	this.create = function (projectId, submission) {
+		return Restangular.all('projects/' + projectId + '/issues').post(submission);
 	};
 });

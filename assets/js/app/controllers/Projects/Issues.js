@@ -1,5 +1,5 @@
 redmineApp.controller('ProjectIssuesController', function($scope, $rootScope, $window, $routeParams, $location, ProjectService, IssueService, TrackerService) {
-	ProjectService.get($routeParams.id).then(function (project) {
+	ProjectService.get($routeParams.project_id).then(function (project) {
 		$rootScope.project = project;
 	});
 
@@ -8,7 +8,7 @@ redmineApp.controller('ProjectIssuesController', function($scope, $rootScope, $w
 
 		var config = {
 			params: {
-				project_id: $routeParams.id
+				project_id: $routeParams.project_id
 			}
 		};
 

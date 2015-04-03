@@ -10,10 +10,6 @@
 	<ng-include src="'partials/layouts/header.html'"></ng-include>
 
 	<div class="container-fluid main">
-		<div ng-repeat="errorMessage in errors" class="alert alert-danger" role="alert">
-			{{ errorMessage }}
-		</div>
-
 		<div class="ng-view"></div>
 	</div>
 

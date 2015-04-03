@@ -25,14 +25,14 @@ redmineApp.service('ProjectService', function ($http, $q, ConfigurationService) 
 
 				/* First pass, hash projects */
 				for (var i = 0; i < response.data.projects.length; i++) {
-					projectMap[response.data.projects[i].id] = response.data.projects[i];
+					projectMap[response.data.projects[i].identifier] = response.data.projects[i];
 				}
 
 				/* Second pass, assign subprojects */
 				for (var j = 0; j < response.data.projects.length; j++) {
 					var project = response.data.projects[j];
 					if (project.parent !== undefined) {
-						var parent = projectMap[project.parent.id];
+						var parent = projectMap[project.parent.identifier];
 						if (parent.children === undefined) {
 							parent.children = [];
 						}
@@ -57,14 +57,14 @@ redmineApp.service('ProjectService', function ($http, $q, ConfigurationService) 
 		});
 	};
 
-	this.get = function (id) {
+	this.get = function (identifier) {
 		return projectService.loadProjects().then(function (projects) {
-			return projectMap[id];
+			return projectMap[identifier];
 		});
 	};
 
-	this.getVersions = function (id) {
-		return $http.get(ConfigurationService.getRestServiceBase() + "/projects/" + id + "/versions.json").then(function (response) {
+	this.getVersions = function (identifier) {
+		return $http.get(ConfigurationService.getRestServiceBase() + "/projects/" + identifier + "/versions.json").then(function (response) {
 			return response.data.versions;
 		});
 	};
@@ -82,8 +82,8 @@ redmineApp.service('ProjectService', function ($http, $q, ConfigurationService) 
 	};
 
 	//TODO: reload projects after delete
-	this['delete'] = function (id) {
-		return $http['delete'](ConfigurationService.getRestServiceBase() + "/projects/" + id + ".json");
+	this.delete = function (identifier) {
+		return $http.delete(ConfigurationService.getRestServiceBase() + "/projects/" + identifier + ".json");
 	};
 
 	this.getAllProjects = function () {

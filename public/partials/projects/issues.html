@@ -17,11 +17,11 @@
 		<tbody>
 			<tr data-ng-repeat="issue in issues.entries">
 				<td class=""><input type="checkbox"></td>
-				<td><a href="#!/projects/{{project.id}}/issues/{{issue.id}}">{{ issue.id }}</a></td>
+				<td><a href="#!/projects/{{project.identifier}}/issues/{{issue.id}}">{{ issue.id }}</a></td>
 				<td>{{ issue.tracker.name }}</td>
 				<td>{{ issue.status.name }}</td>
 				<td>{{ issue.priority.name }}</td>
-				<td><a href="#!/projects/{{project.id}}/issues/{{issue.id}}">{{ issue.subject }}</a></td>
+				<td><a href="#!/projects/{{project.identifier}}/issues/{{issue.id}}">{{ issue.subject }}</a></td>
 				<td>{{ issue.assigned_to.name }}</td>
 				<td>{{ issue.updated_on }}</td>
 			</tr>

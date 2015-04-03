@@ -20,42 +20,42 @@ var redmineApp = angular.module('redmineApp', ['ngRoute', 'restangular'])
 		controller: 'ProjectCreateController',
 	});
 
-	$routeProvider.when('/projects/:id', {
+	$routeProvider.when('/projects/:project_id', {
 		templateUrl: 'partials/projects/show.html',
 		controller: 'ProjectShowController',
 	});
 
-	$routeProvider.when('/projects/:id/activity', {
+	$routeProvider.when('/projects/:project_id/activity', {
 		templateUrl: 'partials/projects/activity.html',
 		controller: 'ProjectActivityController',
 	});
 
-	$routeProvider.when('/projects/:id/roadmap', {
+	$routeProvider.when('/projects/:project_id/roadmap', {
 		templateUrl: 'partials/projects/roadmap.html',
 		controller: 'ProjectRoadmapController',
 	});
 
-	$routeProvider.when('/projects/:id/issues', {
+	$routeProvider.when('/projects/:project_id/issues', {
 		templateUrl: 'partials/projects/issues.html',
 		controller: 'ProjectIssuesController',
 	});
 
-	$routeProvider.when('/projects/:id/issues/create', {
+	$routeProvider.when('/projects/:project_id/issues/create', {
 		templateUrl: 'partials/issues/create.html',
 		controller: 'IssueCreateController',
 	});
 
-	$routeProvider.when('/projects/:id/issues/:id', {
+	$routeProvider.when('/projects/:project_id/issues/:id', {
 		templateUrl: 'partials/issues/show.html',
 		controller: 'IssueShowController',
 	});
 
-	$routeProvider.when('/projects/:id/issues/:id/edit', {
+	$routeProvider.when('/projects/:project_id/issues/:id/edit', {
 		templateUrl: 'partials/issues/edit.html',
 		controller: 'IssueEditController',
 	});
 
-	$routeProvider.when('/projects/:id/settings', {
+	$routeProvider.when('/projects/:project_id/settings', {
 		templateUrl: 'partials/projects/edit.html',
 		controller: 'ProjectEditController',
 	});
@@ -100,6 +100,12 @@ function setupErrorManagement($rootScope) {
 		$rootScope.errors.push(error);
 	};
 
+	$rootScope.addErrors = function (errors) {
+		for (var i in errors) {
+			$rootScope.addError(errors[i]);
+		}
+	};
+
 	$rootScope.$on("$routeChangeStart", function (event, next, current) {
 		$rootScope.clearErrors();
 		$('.navbar-collapse').collapse('hide');
@@ -131,18 +137,15 @@ function setupRestangular(Restangular) {
 
 	/* Redmine needs wrapped requests, so wrap them */
 	Restangular.addRequestInterceptor(function (element, operation, what, url) {
-		switch (what) {
-			case "issues":
-				switch (operation) {
-					case "put":
-					case "post":
-						return {
-							'issue': element
-						};
-				}
-				break;
+		if (/^projects\/(.*)\/issues$/.test(what) || /^issues$/.test(what)) {
+			switch (operation) {
+				case "put":
+				case "post":
+					return {
+						'issue': element
+					};
+			}
 		}
-
 		console.debug("Unmodified Request", element, operation, what, url);
 		return element;
 	});

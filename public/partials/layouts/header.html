@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#!/projects/{{project.id}}"><span ng-hide="project"><b>Redmine.JS</b></span>{{project.name}}</a>
+			<a class="navbar-brand" href="#!/projects/{{project.identifier}}"><span ng-hide="project"><b>Redmine.JS</b></span>{{project.name}}</a>
 		</div>
 
 		<nav class="collapse navbar-collapse">
@@ -15,11 +15,11 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li ng-repeat="project in topLevelProjects"><a href="#!/projects/{{project.id}}">{{project.name}}</a>
+						<li ng-repeat="project in topLevelProjects"><a href="#!/projects/{{project.identifier}}">{{project.name}}</a>
 							<ul>
-								<li ng-repeat="project in project.children"><a href="#!/projects/{{project.id}}">{{project.name}}</a>
+								<li ng-repeat="project in project.children"><a href="#!/projects/{{project.identifier}}">{{project.name}}</a>
 									<ul>
-										<li ng-repeat="project in project.children"><a href="#!/projects/{{project.id}}">{{project.name}}</a></li>
+										<li ng-repeat="project in project.children"><a href="#!/projects/{{project.identifier}}">{{project.name}}</a></li>
 									</ul>
 								</li>
 							</ul>
