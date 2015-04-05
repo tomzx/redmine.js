@@ -1,45 +1,19 @@
 redmineApp.service('IssueService', function ($http, $q, ConfigurationService, Restangular) {
-	var issuesUrl = ConfigurationService.getRestServiceBase() + "/issues";
+	var issuesUrl = ConfigurationService.getRestServiceBase() + '/issues';
 	var issueStatuses;
 
 	this.find = function (config) {
-		return $http.get(issuesUrl + ".json", config).then(function (response) {
+		return $http.get(issuesUrl + '.json', config).then(function (response) {
 			return response.data;
 		});
 	};
 
 	this.getIssueStatuses = function () {
-		var deferred = $q.defer();
-
-		if (issueStatuses !== undefined) {
-
-			deferred.resolve(issueStatuses);
-
-		} else {
-
-			$http.get(ConfigurationService.getRestServiceBase() + "/issue_statuses.json").then(function (response) {
-				issueStatuses = response.data.issue_statuses;
-				deferred.resolve(issueStatuses);
-			});
-		}
-
-		return deferred.promise;
+		return Restangular.all('issue_statuses').getList();
 	};
 
 	this.getPriorities = function () {
-		// TODO: Newer versions of redmine have a method to get the priority enumeration. If we are able to detect the
-		// version we should use that method and use the hardcoded priorities as fallback.
-
-		var deferred = $q.defer();
-		deferred.resolve([
-			{ "id": 3, "name": "Low" },
-			{ "id": 4, "name": "Normal" },
-			{ "id": 5, "name": "High" },
-			{ "id": 6, "name": "Urgent" },
-			{ "id": 7, "name": "Immediate" }
-		]);
-
-		return deferred.promise;
+		return Restangular.all('enumerations/issue_priorities').getList();
 	};
 
 	this.getCategoriesByProject = function (projectId) {
@@ -54,7 +28,7 @@ redmineApp.service('IssueService', function ($http, $q, ConfigurationService, Re
 
 
 	this.delete = function (id, submission) {
-		return $http.delete(issuesUrl + "/" + id + ".json", submission).then(function (response) {
+		return $http.delete(issuesUrl + '/' + id + '.json', submission).then(function (response) {
 		});
 	};
 

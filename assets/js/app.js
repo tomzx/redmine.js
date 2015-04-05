@@ -129,6 +129,18 @@ function setupRestangular(Restangular) {
 					return data.trackers;
 				}
 				break;
+
+			case "enumerations/issue_priorities":
+				if (operation === "getList") {
+					return data.issue_priorities;
+				}
+				break;
+
+			case "issue_statuses":
+				if (operation === "getList") {
+					return data.issue_statuses;
+				}
+				break;
 		}
 
 		console.debug("Unmodified Response", data, operation, what, url, response, deferred);
